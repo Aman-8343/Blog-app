@@ -67,6 +67,70 @@ return await this.databases.updateDocument(
             return false
         }
     }
+    async getPost(slug){
+        try {
+            return await  this.databases.getDocument(
+    config.appwriteDatabaseId,
+    config.appwriteCollectionId,
+    slug
+            )
+        } catch (error) {
+            console.log("Appwrite error::getPost :: error",error)
+            return false
+        }
+    }
+
+    async getPosts(queries=[Query.equal("status","active")]){
+try {
+    return await this.databases.listDocuments(
+         config.appwriteDatabaseId,
+    config.appwriteCollectionId,
+    queries,
+
+    )
+} catch (error) {
+      console.log("Appwrite error::getPost :: error",error)
+            return false
+}
+    }
+
+
+
+ async uploadFile(file){
+   try {
+    return await this.bucket.createFile(
+         config.appwriteBucketId,
+         ID.unique(),
+         file
+
+    )
+} catch (error) {
+      console.log("Appwrite error::getPost :: error",error)
+            return false
+}
+}
+
+async deleteFile(fileID){
+    try {
+     return await this.bucket.deleteFile(
+          config.appwriteBucketId,
+         fileID
+  )
+     return true
+ } catch (error) {
+       console.log("Appwrite error::getPost :: error",error)
+             return false
+ }
+ }
+
+
+      getFilePreview(fileID){
+        return this.bucket.deleteFile(
+          config.appwriteBucketId,
+         fileID
+        )
+      }
+
 }
 
 const service=new service()

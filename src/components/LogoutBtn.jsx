@@ -15,4 +15,4 @@ function LogoutBtn() {
   )
 }
 
-export default LogotBtn
+export default LogoutBtn

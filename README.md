@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 # Blog-app
-=======
+=======This is a blog app build with React.js in which User can Login to see or create posts...
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
